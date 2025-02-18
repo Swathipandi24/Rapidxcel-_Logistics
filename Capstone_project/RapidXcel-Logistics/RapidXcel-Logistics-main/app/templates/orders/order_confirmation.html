@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h1>Order Confirmation</h1>
+    <p>Your order has been placed successfully!</p>
+    <h2>Order Details</h2>
+    <table border="1">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        {% for item in order.items %}
+        <tr>
+            <td>{{ item.stock.stock_name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.stock.price * item.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p>Total Cost: ₹{{ order.total_cost }}</p>
+    <p>Shipping Cost: ₹{{ order.shipping_cost }}</p>
+    <p>Grand Total: ₹{{ order.grand_total }}</p>
+
+    <h2>Delivery Details</h2>
+    <p>Address: {{ order.delivery_address }}</p>
+    <p>Pin Code: {{ order.pincode }}</p>
+    <p>Phone: {{ order.phone }}</p>
+
+    <button><a href="{{ url_for('auth.customer_orders') }}">Back to Orders</a></button>
+</body>
+</html>

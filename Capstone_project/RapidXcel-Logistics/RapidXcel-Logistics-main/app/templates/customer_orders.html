@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders</title>
+</head>
+<body>
+    <h1>Place Orders</h1>
+    <p>Welcome, Customer! Here you can place new orders and track the status of existing ones.</p>
+    <button><a href="{{ url_for('auth.logout') }}">Logout</a></button>
+
+    <h2>Ready to place an order?</h2> <button><a href="{{ url_for('order.place_order_page') }}">Place an Order</a></button>
+    <h2>Want to see your order history?</h2> <button><a href="{{ url_for('order.order_history') }}">Your Order History</a></button>
+
+    <!-- <h2>Your Order</h2>
+    <form action="{{ url_for('order.place_order') }}" method="POST">
+        <table border="1">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>Total Cost: ₹{{ total_cost }}</p>
+        <p>Shipping Cost: ₹{{ shipping_cost }}</p>
+        <p>Grand Total: ₹{{ grand_total }}</p> -->
+
+        <!-- Delivery Details -->
+        <!-- <h2>Delivery Details</h2>
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" required></textarea><br>
+        <label for="pincode">Pin Code:</label>
+        <input type="text" name="pincode" id="pincode" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required><br>
+        <button type="submit">Place Order</button>
+    </form> -->
+</body>
+</html>

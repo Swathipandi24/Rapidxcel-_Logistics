@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Edit Stock</h1>
+<form action="{{ url_for('inventory.edit_stock', stock_id=stock.id) }}" method="POST">
+    <div class="form-group">
+        <label for="stock_name">Stock Name</label>
+        <input type="text" name="stock_name" class="form-control" value="{{ stock.stock_name }}" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" name="price" class="form-control" value="{{ stock.formatted_price }}" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" class="form-control" value="{{ stock.quantity }}" required>
+    </div>
+    <div class="form-group">
+        <label for="weight">Weight per Product</label>
+        <div class="input-group">
+            <input type="number" name="weight" class="form-control" step="0.01" placeholder="Enter value" required>
+            <select name="unit" class="form-select" required>
+                <option value="kg">kg</option>
+                <option value="gram">gram</option>
+                <option value="pages">pages</option>
+                <option value="litre">l</option>
+                <option value="ml">ml</option>
+                <option value="metre">metre</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+{% endblock %}

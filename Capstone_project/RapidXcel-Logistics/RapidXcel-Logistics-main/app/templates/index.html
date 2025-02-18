@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Homepage</h1>
+    <p>You are logged in successfully!</p>
+    <button><a href="{{ url_for('auth.register') }}">Register</a></button>
+    <button><a href="{{ url_for('auth.login') }}">Login</a></button>
+</body>
+</html>

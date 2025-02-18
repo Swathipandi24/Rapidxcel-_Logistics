@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Add Stock</h1>
+<form action="{{ url_for('inventory.add_stock') }}" method="POST">
+    <div class="form-group">
+        <label for="stock_name">Stock Name</label>
+        <input type="text" name="stock_name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" name="price" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" class="form-control" required>
+    </div>
+    <div class="form-group">
+    <label for="weight">Weight per Product</label>
+    <div class="input-group">
+        <input type="number" name="weight" class="form-control" step="0.01" placeholder="Enter value" required>
+        <select name="unit" class="form-select" required>
+            <option value="kg">kg</option>
+            <option value="gram">gram</option>
+            <option value="pages">pages</option>
+            <option value="litre">l</option>
+            <option value="ml">ml</option>
+            <option value="metre">metre</option>
+        </select>
+    </div>
+</div>
+    <button type="submit" class="btn btn-primary">Add Stock</button>
+</form>
+{% endblock %}

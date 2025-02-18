@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+</head>
+<body>
+    <h1>Order History</h1>
+    <p>Here you can track the status of your orders.</p>
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Total Cost</th>
+            <th>Shipping Cost</th>
+            <th>Grand Total</th>
+            <th>Delivery Address</th>
+            <th>Pin Code</th>
+            <th>Phone</th>
+            <th>Details</th>
+            <th>Track Delivery</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.created_at.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            <td>₹{{ order.total_cost }}</td>
+            <td>₹{{ order.shipping_cost }}</td>
+            <td>₹{{ order.grand_total }}</td>
+            <td>{{ order.delivery_address }}</td>
+            <td>{{ order.pincode }}</td>
+            <td>{{ order.phone }}</td>
+            <td><a href="{{ url_for('order.order_details', order_id=order.id) }}">View Details</a></td>
+            <td><a href="{{ url_for('courier.track_delivery', order_id=order.id) }}">Track Delivery</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button><a href="{{ url_for('auth.customer_orders') }}">Back to Orders</a></button>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review and Place Order</title>
+</head>
+<body>
+    <h1>Review and Place Your Order</h1>
+    <form action="{{ url_for('order.place_order') }}" method="POST">
+        <table border="1">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.product_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>₹{{ item.total_price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>Total Cost: ₹{{ total_cost }}</p>
+        <p>Shipping Cost: ₹{{ shipping_cost }}</p>
+        <p>Grand Total: ₹{{ grand_total }}</p>
+
+        <!-- Delivery Details -->
+        <h2>Delivery Details</h2>
+        <label for="address">Address:</label>
+        <textarea name="address" id="address" required></textarea><br>
+        <label for="pincode">Pin Code:</label>
+        <input type="text" name="pincode" id="pincode" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone" required><br>
+        <button type="submit">Place Order</button>
+    </form>
+    <button><a href="{{ url_for('auth.customer_orders') }}">Back to Orders</a></button>
+</body>
+</html>

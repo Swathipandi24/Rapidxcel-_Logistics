@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Delivery</title>
+</head>
+<body>
+    <h1>Track Delivery</h1>
+    <h2>Order Details</h2>
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <td>{{ order.id }}</td>
+        </tr>
+        <tr>
+            <th>Order Date</th>
+            <td>{{ order.created_at }}</td>
+        </tr>
+        <tr>
+            <th>Delivery Address</th>
+            <td>{{ order.delivery_address }}</td>
+        </tr>
+        <tr>
+            <th>Weight</th>
+            <td>{{ order.weight }}</td>
+        </tr>
+        <tr>
+            <th>Items</th>
+            <td>{{ order.items }}</td>
+        </tr>
+        <tr>
+            <th>Shipping Cost</th>
+            <td>{{ order.shipping_cost }}</td>
+        </tr>
+        <tr>
+            <th>Expected Delivery Date</th>
+            <td>{{ order.expected_delivery_date }}</td>
+        </tr>
+        <tr>
+            <th>Order Status</th>
+            <td>{{ order.status }}</td>
+        </tr>
+    </table>
+</body>
+</html>

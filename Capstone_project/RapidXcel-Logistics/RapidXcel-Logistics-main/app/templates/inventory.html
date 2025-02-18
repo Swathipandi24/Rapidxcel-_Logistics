@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Inventory Management</h1>
+<a href="{{ url_for('inventory.add_stock') }}" class="btn btn-primary">Add Stock</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Stock Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Weight per Product</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.id }}</td>
+            <td>{{ stock.stock_name }}</td>
+            <td>{{ stock.formatted_price }}</td>
+            <td>{{ stock.quantity }}</td>
+            <td>{{ stock.weight }} {{ stock.unit }}</td>
+            <td>
+                <a href="{{ url_for('inventory.edit_stock', stock_id=stock.id) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ url_for('inventory.delete_stock', stock_id=stock.id) }}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

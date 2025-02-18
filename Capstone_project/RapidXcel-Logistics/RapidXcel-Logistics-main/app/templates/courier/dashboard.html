@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Dashboard</title>
+</head>
+<body>
+    <h1>Courier Dashboard</h1>
+    <h2>Orders Overview</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Delivery Address</th>
+                <th>Items</th>
+                <th>Shipping Cost</th>
+                <th>Expected Delivery Date</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.created_at }}</td>
+                <td>{{ order.delivery_address }}</td>
+                <td>{{ order.items }}</td>
+                <td>{{ order.shipping_cost }}</td>
+                <td>{{ order.expected_delivery_date }}</td>
+                <td>{{ order.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Update Order Status</h2>
+{% for order in orders %}
+    <form action="{{ url_for('courier.update_status', order_id=order.id) }}" method="post">
+        <p>Updating Order ID: {{ order.id }}</p>
+        <label for="status-{{ order.order_id }}">Status:</label>
+        <select name="status" id="status-{{ order.order_id }}">
+            <option value="In Transit">In Transit</option>
+            <option value="Processing">Processing</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+        <button type="submit">Update Status</button>
+    </form>
+{% endfor %}
+</body>
+</html>
